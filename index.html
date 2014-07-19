@@ -52,22 +52,19 @@
     {% endfor %}
 </section>
 -->
-    
+    <section class="main-content">
+ <div class="innermain" id="main">
+</div>
+        </section>
 <script src="main.js"></script>
 <script id="itemTemplate" type="text/mustache">
     {{#posts}}
-    <div class="item">
-        <div class="date">
-            <div class="little">
-            </div>
-            {{date}}
-        </div>
-        <div class="title">
-            <h2>
-                <a href="{{path}}">{{title}}</a>
-            </h2>
-        </div>
-    </div>
+    
+    <article class="module color3">
+            <h2><a class="red" href="{{ path }}">{{ title }}</a></h2>
+            <time>{{ date| date: "%m/%d/%Y" }}</time>
+            <p>{{ content | strip_html | truncate: 250 }}</p>
+    </article>
     {{/posts}}
     <ul class="pages">
         Pages:
