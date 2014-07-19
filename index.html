@@ -10,31 +10,45 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-<div class="main">
-    <div class="header">
-        <ul id="pages">
-            <li>
-                <a href="/">home</a>
-            </li>
-            <li>
-                <a href="/#/tags">tags</a>
-            </li>
-            <li>
-                <a href="/#/archive">archive</a>
-            </li>
-        </ul>
+ <header class="main-header">
+    <div class="module color1">
+        <h1><a href="/">{{ site.name }}</a></h1>
     </div>
-    <div class="wrap-header">
-        <h1>
-        <a href="/" id="title"></a>
-        </h1>
+
+    <div class="module color2">
+        {{ site.description }}
     </div>
-    <div class="innermain" id="main">
+
+    <nav class="module color4">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+    </nav>
+
+    <div class="module color3">
+        github/{{ site.github }}
+        <br>twitter/{{ site.twitter }}
+        <br>{{ site.email }}
     </div>
-    <div class="footer">
-        <p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
-    </div>
-</div>
+
+</header>
+<section class="main-content">
+    {% for post in site.posts limit:1 %}
+        <article class="module color3">
+                <h2><a class="red" href="{{ post.url }}">{{ post.title }}</a></h2>
+                <time>{{ post.date| date: "%m/%d/%Y" }}</time>
+                <p>{{ post.content | strip_html | truncate: 250 }}</p>
+        </article>
+    {% endfor %}
+
+    {% for post in site.posts offset:1 %}
+        <article class="module color3">
+            <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+            <time>{{ post.date| date: "%m/%d/%Y" }}</time>
+        </article>
+    {% endfor %}
+</section>
+    
 <script src="main.js"></script>
 <script id="itemTemplate" type="text/mustache">
     {{#posts}}
