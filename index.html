@@ -62,7 +62,7 @@
     
     <article class="module color3">
             <h2><a class="red" href="{{ path }}">{{ title }}</a></h2>
-            <div class="date">{{ date }}</div>
+            <time>{{ date| date: "%m/%d/%Y" }}</time>
             <p>{{ content | strip_html | truncate: 250 }}</p>
     </article>
     {{/posts}}
