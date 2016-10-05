@@ -1,27 +1,28 @@
+---
+layout: null
+---
+
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://JuanSierra.github.io/atom.xml" rel="self"/>
-  <link href="http://JuanSierra.github.io/"/>
-  <updated>2014-10-27T03:28:16-05:00</updated>
-  <id>http://JuanSierra.github.io/</id>
-  <author>
-    <name><![CDATA[Your Name]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+ <title>{{ site.title }}</title>
+ <link href="{{ site.url }}{{ site.baseurl }}/atom.xml" rel="self"/>
+ <link href="{{ site.url }}{{ site.baseurl }}/"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>{{ site.url }}</id>
+ <author>
+   <name>{{ site.author.name }}</name>
+   <email>{{ site.author.email }}</email>
+ </author>
 
-  
-  <entry>
-    <title type="html"><![CDATA[First  Pillar]]></title>
-    <link href="http://JuanSierra.github.io/blog/2014/08/30/first-pillar/"/>
-    <updated>2014-08-30T01:47:17-05:00</updated>
-    <id>http://JuanSierra.github.io/blog/2014/08/30/first-pillar</id>
-    <content type="html"><![CDATA[<p>This will be a great post
-* One
-* Two</p>
-]]></content>
-  </entry>
-  
+ {% for post in site.posts %}
+ <entry>
+   <title>{{ post.title | xml_escape }}</title>
+   <link href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>{{ site.url }}{{ post.id }}</id>
+   <content type="html">{{ post.content | xml_escape }}</content>
+ </entry>
+ {% endfor %}
+
 </feed>
