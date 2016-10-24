@@ -27,6 +27,7 @@ img {
 .panel {
     border:none;
     box-shadow: 0px 0px 1px $grey-color;
+	background-color: blue;
 }
 
 .panel:hover {
@@ -83,3 +84,5 @@ footer {
 .card {
     float: none;
 }
+
+
